@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Ethiopia Modals</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('image/im.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      button {
+        padding: 15px 30px;
+        background-color: #3a5a40;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin: 10px;
+      }
+
+      button:hover {
+        background-color: #e67e00;
+      }
+
+      /* Common Modal Styling */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+      }
+
+      .modal-content {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(255, 140, 0, 0.5);
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+      }
+
+      .modal-content img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .modal-content h2 {
+        margin-bottom: 15px;
+        color: #90a955;
+      }
+
+      .modal-content p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .modal-content span.close {
+        color: #ff6b6b;
+        font-size: 30px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .modal-content span.close:hover {
+        color: #ff3636;
+      }
+
+      .modal.active {
+        display: flex;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @media (max-width: 768px) {
+        .modal-content {
+          width: 100%;
+          padding: 20px;
+        }
+
+        button {
+          font-size: 16px;
+          padding: 12px 24px;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Buttons for Opening Different Modals -->
+    <button id="openModal1">Ethiopia's History</button>
+    <button id="openModal2">Ethiopian Coffee</button>
+    <button id="openModal3">Ethiopian Landscapes</button>
+
+    <!-- Modal 1: Ethiopia's History -->
+    <div class="modal" id="myModal1">
+        <div class="modal-content">
+            <span class="close" data-modal="myModal1">&times;</span>
+            <h2>Ethiopia's Ancient History</h2>
+            <img src="image/image copy.png" alt="Axum Obelisk">
+            <p>Ethiopia is one of the oldest countries in the world, with a history dating back thousands of years. The ancient Kingdom of Axum, one of the great civilizations of antiquity, left behind impressive monuments, including the famous obelisks. Ethiopia is also notable as the only African country never colonized, maintaining its sovereignty throughout history.</p>
+        </div>
+    </div>
+
+    <!-- Modal 2: Ethiopian Coffee -->
+    <div class="modal" id="myModal2">
+        <div class="modal-content">
+            <span class="close" data-modal="myModal2">&times;</span>
+            <h2>Ethiopian Coffee</h2>
+            <img src="image/image.png" alt="Ethiopian Coffee">
+            <p>Ethiopia is the birthplace of coffee, where the coffee plant, Coffea Arabica, originated. Ethiopian coffee is known for its rich flavor and unique preparation methods. The traditional Ethiopian coffee ceremony is a beautiful cultural experience where coffee beans are roasted, ground, and brewed in front of guests.</p>
+        </div>
+    </div>
+
+    <!-- Modal 3: Ethiopian Landscapes -->
+    <div class="modal" id="myModal3">
+        <div class="modal-content">
+            <span class="close" data-modal="myModal3">&times;</span>
+            <h2>Breathtaking Ethiopian Landscapes</h2>
+            <img src="image/Ethiopia-landscape-2.jpg" alt="Lalibela Landscape">
+            <p>Ethiopia is home to diverse and stunning landscapes, from the highlands of the Simien Mountains to the scorching depths of the Danakil Depression. The rock-hewn churches of Lalibela and the Blue Nile Falls are just a few examples of the country's natural and man-made wonders.</p>
+        </div>
+    </div>
+
+    <script>
+      const modals = document.querySelectorAll('.modal');
+      const openModal1 = document.getElementById('openModal1');
+      const openModal2 = document.getElementById('openModal2');
+      const openModal3 = document.getElementById('openModal3');
+      const closeButtons = document.querySelectorAll('.close');
+
+      // Open Modal Functions
+      openModal1.onclick = () => document.getElementById('myModal1').classList.add('active');
+      openModal2.onclick = () => document.getElementById('myModal2').classList.add('active');
+      openModal3.onclick = () => document.getElementById('myModal3').classList.add('active');
+
+      // Close Modal Functions
+      closeButtons.forEach(button => {
+        button.onclick = function () {
+          const modalId = this.getAttribute('data-modal');
+          document.getElementById(modalId).classList.remove('active');
+        };
+      });
+
+      // Close modal when clicking outside of it
+      window.onclick = function(event) {
+        modals.forEach(modal => {
+          if (event.target === modal) {
+            modal.classList.remove('active');
+          }
+        });
+      }
+    </script>
+</body>
+</html>
